@@ -7,8 +7,8 @@
  */
 public class App {
 
-    final int BOARD_SIZE = 10;
-    final int NO_MINES = 10;
+    final int BOARD_SIZE = 10; //max is 26
+    final double MINE_RATE = 0.2; //max is 1
 
     Board board;
 
@@ -16,7 +16,8 @@ public class App {
      * Sets up the board, including the positions of the mines.
      */
     private void setup() {
-        board = new Board(BOARD_SIZE, NO_MINES);
+        board = new Board(BOARD_SIZE, MINE_RATE);
+        board.printBoard();
     }
 
     public static void main(String[] args) {
