@@ -5,8 +5,8 @@ prompt you to enter moves till you either win or lose. <br>
 
 ## Running the code
 
-Code can be run using command line. <br><br>
- - First navigate to the src file <br>
+Code can be run using command line. <br>
+ - First navigate to the src file 
  - Type the following commands into command line: <br>
     $ javac Game.java <br>
     $ java Game <br><br>
