@@ -5,7 +5,7 @@ prompt you to enter moves till you either win or lose. <br>
 
 ## Running the code
 
-Code can be run using command line. <br>
+Code can be run using command line. All you need is a valid JDK, in my case JDK 11. <br>
  - First navigate to the src file 
  - Type the following commands into command line: <br>
     $ javac Game.java <br>
