@@ -80,7 +80,7 @@ public class BoardTile implements Tile {
         else if (mine)
             return "O";
 
-        return "_";
+        return (adjMines == 0) ? " " : adjMines + "";
     }
 
 }

@@ -54,6 +54,11 @@ public class Game {
                 break;
 
             board.printBoard();
+
+            if (board.checkWin()) {
+                System.out.println("Congratulations! You won!\n");
+                break;
+            }
         }
     }
 
@@ -65,8 +70,16 @@ public class Game {
      */
     private boolean checkMoveInput(String input) {
 
+        if (input.length() < 3) {
+
+            System.out.println("Please enter a valid move, e.g. Ra3");
+
+            return false;
+        }
         if (input.charAt(1) >= ((char) (board.getBoard().length + 'a' - 1))) {
+
             System.out.println("Please enter a valid move location letter e.g. Ra3");
+
             return false;
         }
 
@@ -81,6 +94,7 @@ public class Game {
                 return false;
             }
         } else {
+
             System.out.println("Please enter a valid move type e.g. Fa3 or Ra3");
             return false;
         }
@@ -98,21 +112,25 @@ public class Game {
         int col = Character.getNumericValue(input.charAt(1)) - Character.getNumericValue('a') + 1;
 
         BoardTile currTile = ((BoardTile) board.getBoard()[row][col]);
+
         if (input.charAt(0) == 'F') {
             if (!currTile.isShown()) {
                 currTile.flag();
             }
         } else if (input.charAt(0) == 'R') {
-            if (!currTile.isShown()) {
+            if (!currTile.isShown() && !currTile.isFlag()) {
 
-                currTile.show();
+               
 
                 if (currTile.isMine()) {
+                    currTile.show();
                     board.printBoard();
-                    System.out.println("you lose!");
+                    System.out.println("You lose!\n");
                     return false;
-
+                } else if (currTile.getAdjMines() == 0) {
+                    board.spreadNone(row, col);
                 }
+                currTile.show();
             }
         }
 

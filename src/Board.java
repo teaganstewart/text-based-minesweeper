@@ -23,7 +23,8 @@ public class Board {
     }
 
     /**
-     * Creates the sections of the board array containing the alpha tiles - the coordinates.
+     * Creates the sections of the board array containing the alpha tiles - the
+     * coordinates.
      */
     private void setupCoords() {
         char curr = 'a';
@@ -69,6 +70,46 @@ public class Board {
                 }
             }
         }
+    }
+
+    void spreadNone(int row, int col) {
+        spread(row, col);
+    }
+
+    /**
+     * Recursive helper method for spread none.
+     * 
+     * @param row The row of the curr tile.
+     * @param col The col of the curr tile.
+     */
+    void spread(int row, int col) {
+        BoardTile currTile = ((BoardTile) board[row][col]);
+        // base case
+        if (currTile.getAdjMines() != 0 || currTile.isShown()) {
+            currTile.show();
+            return;
+        }
+
+        currTile.show();
+
+        for (int i = Math.max(1, row - 1); i <= Math.min(size - 1, row + 1); i++) {
+            for (int j = Math.max(1, col - 1); j <= Math.min(size - 1, col + 1); j++) {
+                if (!(i == row && j == col)) {
+                    spread(i, j);
+                }
+            }
+        }
+    }
+
+    boolean checkWin() {
+        for (int row = 1; row < size; row++) {
+            for (int col = 1; col < size; col++) {
+                if (!((BoardTile) board[row][col]).isMine() && !((BoardTile) board[row][col]).isShown()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**
