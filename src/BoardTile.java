@@ -4,9 +4,10 @@
  */
 public class BoardTile implements Tile {
 
-    boolean mine;
-    boolean shown = false;
-    boolean flag = false;
+    private boolean mine;
+    private boolean shown = false;
+    private boolean flag = false;
+    private int adjMines = 0;
 
     BoardTile(boolean mine) {
         this.mine = mine;
@@ -24,6 +25,22 @@ public class BoardTile implements Tile {
      */
     void flag() {
         flag = !flag;
+    }
+
+    /**
+     * Adds a mine to the number of adjacent mines, used in the board setup method.
+     */
+    void addMine() {
+        adjMines++;
+    }
+
+    /**
+     * Gets the number of adjacent mines, shown when a tile is uncovered.
+     * 
+     * @return Returns the number of adjacent mines to the tile.
+     */
+    int getAdjMines() {
+        return adjMines;
     }
 
     /**
@@ -54,16 +71,16 @@ public class BoardTile implements Tile {
     }
 
     @Override
-    public char printTile() {
+    public String printTile() {
 
         if (flag)
-            return 'F';
+            return "F";
         else if (!shown)
-            return 'X';
+            return "X";
         else if (mine)
-            return 'O';
+            return "O";
 
-        return ' ';
+        return "_";
     }
 
 }

@@ -9,5 +9,5 @@ interface Tile {
      * 
      * @return The corresponding character for the tile.
      */
-    char printTile();
+    String printTile();
 }

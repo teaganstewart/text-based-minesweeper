@@ -1,13 +1,13 @@
 public class AlphaTile implements Tile {
 
-    char letter;
+    String letter;
 
-    AlphaTile(char letter) {
+    AlphaTile(String letter) {
         this.letter = letter;
     }
 
     @Override
-    public char printTile() {
+    public String printTile() {
         return letter;
     }
 

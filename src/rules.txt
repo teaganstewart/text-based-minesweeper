@@ -1,0 +1,10 @@
+The aim in Minesweeper is to reveal every tile that is NOT a mine. Once you reveal your first 
+tile, you will see a number. Each tiles number represents the number of bombs in the eight(8)
+tiles adjacent to that tile. Each tile contains one(1) bomb. You use these numbers to 
+determine what tiles are clear and can be revealed. Tiles you think are mines can be marked
+using flags. If you reveal a tile that is a bomb, you lose. The aim in the game is to reveal
+every non-bomb tile, once you do, you win!
+
+Each round you will be able to flag or reveal a tile. tiles are represented by a letter 
+then a number, for example 'a7'. To reveal the tile a7 type 'Ra7' into the console, to
+flag it type 'Fa7'.
